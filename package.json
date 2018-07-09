@@ -1,0 +1,24 @@
+{
+  "name": "slue-stream",
+  "version": "1.0.8",
+  "description": "stream",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/test.js"
+  },
+  "keywords": [
+    "stream",
+    "transform",
+    "transformObj",
+    "through2",
+    "slue",
+    "slue-plugin"
+  ],
+  "author": "471665225@163.com",
+  "license": "ISC",
+  "dependencies": {
+    "xtend": "^4.0.1"
+  },
+  "_from": "slue-stream@1.0.8",
+  "_resolved": "http://registry.npm.taobao.org/slue-stream/download/slue-stream-1.0.8.tgz"
+}
