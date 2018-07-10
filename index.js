@@ -1,6 +1,7 @@
 const util = require('util');
 const stream = require('stream');
 const xtend = require('xtend');
+const Readable = require('./lib/_stream_readable');
 
 function Transform(config) {
     stream.Transform.call(this, config);
@@ -93,24 +94,24 @@ function addStream(streams, stream) {
     streams.push(stream);
 }
 
-function Combine(streams) {
-    stream.Readable.call(this, {
+function CombineTest(streams) {
+    Readable.call(this, {
         objectMode: true
     });
 
-    let __addStream = addStream.bind(this, streams);
+    let __addStream = addStream.bind(this, []);
 
     streams.forEach(__addStream);
 }
-util.inherits(Combine, stream.Readable);
+util.inherits(CombineTest, Readable);
+CombineTest.prototype._read = function() {};
 
 function getCombine(streams, config) {
     if (!util.isArray(streams)) {
         throw new Error('streams must be arrat');
     }
 
-    let readableStream = new Combine(streams);
-    readableStream._read = function() {};
+    let readableStream = new CombineTest(streams);
     return readableStream;
 }
 
